@@ -2,106 +2,92 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-  <!-- Don't use this in production: -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <title>Tic-Tac-Toe</title>
+   <!-- Don't use this in production: -->
+   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   <title>Tic-Tac-Toe</title>
 </head>
 
 <body>
-  <div id="root"></div>
-  <script type="text/babel">
+   <div class="game">
+      <div class="game-info">
+         Ход: <span class="symbol symbol--x">X</span>
+      </div>
 
-    const SYMBOL_X = 'X';
-    const SYMBOL_O = 'O';
+      <div class="game-field">
+         <button class="cell cell--win"><span class="symbol symbol--x">X</span></button>
+         <button class="cell"><span class="symbol symbol--o">O</span></button>
+         <button class="cell"></button>
 
-    function App() {
-      const cells = [SYMBOL_O, null, null, SYMBOL_O, SYMBOL_X, null, null, null, null];
-      const currentStep = SYMBOL_O;
+         <button class="cell cell--win"><span class="symbol symbol--x">X</span></button>
+         <button class="cell"></button>
+         <button class="cell"><span class="symbol symbol--o">O</span></button>
 
-      const getSymbolClassName = (symbol) => {
-        if (symbol === SYMBOL_O) return 'symbol--o';
-        if (symbol === SYMBOL_X) return 'symbol--x';
-        return '';
+         <button class="cell cell--win"><span class="symbol symbol--x">X</span></button>
+         <button class="cell"><span class="symbol symbol--o">O</span></button>
+         <button class="cell"></button>
+      </div>
+   </div>
+
+   <script type="text/babel"></script>
+
+   <style>
+      html {
+         font-family: Arial, Helvetica, sans-serif;
       }
 
-      const renderSymbol = (symbol) => <span className={`symbol ${getSymbolClassName(symbol)}`}>{symbol}</span>
+      .game {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 150px;
+         margin: 100px auto;
+         padding: 20px;
+         border: 1px solid black;
+      }
 
-      return (
-        <div className="game">
-          <div className="game-info">
-            Ход: {renderSymbol(currentStep)}
-          </div>
-          <div className="game-field">
-            {cells.map((symbol, index) => {
-              return <button key={index} className="cell">{symbol ? renderSymbol(symbol) : null}</button>
-            })}
-          </div>
-        </div>
-      )
-    }
+      .game-info {
+         margin-bottom: 10px;
+      }
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
+      .game-field {
+         display: grid;
+         grid-template-columns: repeat(3, 30px);
+         grid-template-rows: repeat(3, 30px);
+         padding: 1px 0 0 1px;
+      }
 
-  </script>
-  <style>
-    html {
-      font-family: Arial, Helvetica, sans-serif;
-    }
+      .cell {
+         border: 1px solid grey;
+         margin: -1px 0 0 -1px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: transparent;
+      }
 
-    .game {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 150px;
-      margin: 100px auto;
-      padding: 20px;
-      border: 1px solid black;
-    }
+      .cell--win {
+         background: rgba(255, 0, 0, 0.1);
+      }
 
-    .game-info {
-      margin-bottom: 10px;
-    }
+      .symbol {
+         font-size: 20px;
+         line-height: 24px;
+      }
 
-    .game-field {
-      display: grid;
-      grid-template-columns: repeat(3, 30px);
-      grid-template-rows: repeat(3, 30px);
-      padding: 1px 0 0 1px;
-    }
+      .symbol--x {
+         color: red;
+      }
 
-    .cell {
-      border: 1px solid grey;
-      margin: -1px 0 0 -1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: transparent;
-    }
-
-    .cell--win {
-      background: rgba(255, 0, 0, 0.1);
-    }
-
-    .symbol {
-      font-size: 20px;
-      line-height: 24px;
-    }
-
-    .symbol--x {
-      color: red;
-    }
-
-    .symbol--o {
-      color: green;
-    }
-  </style>
+      .symbol--o {
+         color: green;
+      }
+   </style>
 </body>
 
 </html>
