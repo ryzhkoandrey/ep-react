@@ -30,8 +30,9 @@ function App() {
 
       const cellsCopy = cells.slice();
       cellsCopy[index] = currentStep;
-
       setCells(cellsCopy);
+
+      setCurrentStep(currentStep === SYMBOL_O ? SYMBOL_X : SYMBOL_O);
    };
 
    return (
