@@ -2,8 +2,18 @@ const SYMBOL_X = 'X';
 const SYMBOL_O = 'O';
 
 function App() {
-   const cells = [SYMBOL_O, null, null, SYMBOL_O, SYMBOL_X, null, null, null, null];
-   const currentStep = SYMBOL_X;
+   const [cells, setCells] = React.useState([
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+   ]);
+   const [currentStep, setCurrentStep] = React.useState(SYMBOL_O);
 
    const getSymbolClassName = (symbol) => {
       if (symbol === SYMBOL_O) return 'symbol--o';
@@ -15,6 +25,15 @@ function App() {
       <span className={`symbol ${getSymbolClassName(symbol)}`}>{symbol}</span>
    );
 
+   const handleCellClick = (index) => {
+      if (cells[index]) return;
+
+      const cellsCopy = cells.slice();
+      cellsCopy[index] = currentStep;
+
+      setCells(cellsCopy);
+   };
+
    return (
       <div className="game">
          <div className="game-info">Ход: {renderSymbol(currentStep)}</div>
@@ -22,7 +41,11 @@ function App() {
          <div className="game-field">
             {cells.map((symbol, index) => {
                return (
-                  <button key={index} className="cell">
+                  <button
+                     key={index}
+                     className="cell"
+                     onClick={() => handleCellClick(index)}
+                  >
                      {symbol ? renderSymbol(symbol) : null}
                   </button>
                );
