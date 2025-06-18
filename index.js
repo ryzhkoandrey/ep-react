@@ -50,7 +50,7 @@ function App() {
 
    const handleResetClick = () => {
       setCells(Array.from({ length: 9 }, () => null));
-      setCurrentStep(SYMBOL_O);
+      setCurrentStep(SYMBOL_X);
       setWinnerSequence(undefined);
    };
 
@@ -66,6 +66,8 @@ function App() {
 
    const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
    const isDraw = !winnerSequence && cells.filter((value) => value).length === 9;
+
+   return <GameInfo isDraw={false} />;
 
    return (
       <div className="game">
@@ -95,6 +97,10 @@ function App() {
          </button>
       </div>
    );
+}
+
+function GameInfo({ isDraw }) {
+   return <div>{isDraw ? 'Ничья' : 'Игра продолжается'}</div>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
