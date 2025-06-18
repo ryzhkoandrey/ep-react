@@ -37,7 +37,7 @@ function App() {
    const [winnerSequence, setWinnerSequence] = React.useState();
 
    const handleCellClick = (index) => {
-      if (cells[index]) return;
+      if (cells[index] || winnerSequence) return;
 
       const cellsCopy = cells.slice();
       cellsCopy[index] = currentStep;
@@ -46,6 +46,12 @@ function App() {
       setCells(cellsCopy);
       setCurrentStep(currentStep === SYMBOL_O ? SYMBOL_X : SYMBOL_O);
       setWinnerSequence(winner);
+   };
+
+   const handleResetClick = () => {
+      setCells(Array.from({ length: 9 }, () => null));
+      setCurrentStep(SYMBOL_O);
+      setWinnerSequence(undefined);
    };
 
    const getSymbolClassName = (symbol) => {
@@ -59,12 +65,13 @@ function App() {
    );
 
    const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
+   const isDraw = !winnerSequence && cells.filter((value) => value).length === 9;
 
    return (
       <div className="game">
          <div className="game-info">
-            {winnerSequence ? 'Победитель: ' : 'Ход: '}
-            {renderSymbol(winnerSymbol ?? currentStep)}
+            {isDraw ? 'Ничья' : winnerSequence ? 'Победитель: ' : 'Ход: '}
+            {!isDraw && renderSymbol(winnerSymbol ?? currentStep)}
          </div>
 
          <div className="game-field">
@@ -82,6 +89,10 @@ function App() {
                );
             })}
          </div>
+
+         <button className="reset" onClick={handleResetClick}>
+            Сбросить
+         </button>
       </div>
    );
 }
