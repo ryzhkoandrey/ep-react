@@ -36,16 +36,6 @@ function App() {
    const [currentStep, setCurrentStep] = React.useState(SYMBOL_O);
    const [winnerSequence, setWinnerSequence] = React.useState();
 
-   const getSymbolClassName = (symbol) => {
-      if (symbol === SYMBOL_O) return 'symbol--o';
-      if (symbol === SYMBOL_X) return 'symbol--x';
-      return '';
-   };
-
-   const renderSymbol = (symbol) => (
-      <span className={`symbol ${getSymbolClassName(symbol)}`}>{symbol}</span>
-   );
-
    const handleCellClick = (index) => {
       if (cells[index]) return;
 
@@ -58,9 +48,24 @@ function App() {
       setWinnerSequence(winner);
    };
 
+   const getSymbolClassName = (symbol) => {
+      if (symbol === SYMBOL_O) return 'symbol--o';
+      if (symbol === SYMBOL_X) return 'symbol--x';
+      return '';
+   };
+
+   const renderSymbol = (symbol) => (
+      <span className={`symbol ${getSymbolClassName(symbol)}`}>{symbol}</span>
+   );
+
+   const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
+
    return (
       <div className="game">
-         <div className="game-info">Ход: {renderSymbol(currentStep)}</div>
+         <div className="game-info">
+            {winnerSequence ? 'Победитель: ' : 'Ход: '}
+            {renderSymbol(winnerSymbol ?? currentStep)}
+         </div>
 
          <div className="game-field">
             {cells.map((symbol, index) => {
