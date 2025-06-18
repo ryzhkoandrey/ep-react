@@ -64,10 +64,12 @@ function App() {
 
          <div className="game-field">
             {cells.map((symbol, index) => {
+               const isWinner = winnerSequence?.includes(index);
+
                return (
                   <button
                      key={index}
-                     className="cell"
+                     className={`cell ${isWinner ? 'cell--win' : ''}`}
                      onClick={() => handleCellClick(index)}
                   >
                      {symbol ? renderSymbol(symbol) : null}
