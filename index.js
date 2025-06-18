@@ -61,26 +61,19 @@ function App() {
       <div className="game">
          <GameInfo
             isDraw={isDraw}
-            winnerSequence={winnerSequence}
-            renderSymbol={renderSymbol}
             winnerSymbol={winnerSymbol}
             currentStep={currentStep}
          />
 
          <div className="game-field">
-            {cells.map((symbol, index) => {
-               const isWinner = winnerSequence?.includes(index);
-
-               return (
-                  <button
-                     key={index}
-                     className={`cell ${isWinner ? 'cell--win' : ''}`}
-                     onClick={() => handleCellClick(index)}
-                  >
-                     {symbol ? renderSymbol(symbol) : null}
-                  </button>
-               );
-            })}
+            {cells.map((symbol, index) => (
+               <GameCell
+                  key={index}
+                  isWinner={winnerSequence?.includes(index)}
+                  onClick={() => handleCellClick(index)}
+                  symbol={symbol}
+               />
+            ))}
          </div>
 
          <button className="reset" onClick={handleResetClick}>
@@ -96,13 +89,16 @@ function GameInfo({ isDraw, winnerSymbol, currentStep }) {
    }
 
    if (winnerSymbol) {
-      return <div className="game-info">Победитель: {winnerSymbol}</div>;
+      return (
+         <div className="game-info">
+            Победитель: <GameSymbol symbol={winnerSymbol} />
+         </div>
+      );
    }
 
    return (
       <div className="game-info">
-         {isDraw ? 'Ничья' : winnerSequence ? 'Победитель: ' : 'Ход: '}
-         {!isDraw && <GameSymbol symbol={winnerSymbol ?? currentStep} />}
+         Ход: <GameSymbol symbol={currentStep} />
       </div>
    );
 }
