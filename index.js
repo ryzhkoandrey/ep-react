@@ -54,27 +54,18 @@ function App() {
       setWinnerSequence(undefined);
    };
 
-   const getSymbolClassName = (symbol) => {
-      if (symbol === SYMBOL_O) return 'symbol--o';
-      if (symbol === SYMBOL_X) return 'symbol--x';
-      return '';
-   };
-
-   const renderSymbol = (symbol) => (
-      <span className={`symbol ${getSymbolClassName(symbol)}`}>{symbol}</span>
-   );
-
    const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
    const isDraw = !winnerSequence && cells.filter((value) => value).length === 9;
 
-   return <GameInfo isDraw={false} />;
-
    return (
       <div className="game">
-         <div className="game-info">
-            {isDraw ? 'Ничья' : winnerSequence ? 'Победитель: ' : 'Ход: '}
-            {!isDraw && renderSymbol(winnerSymbol ?? currentStep)}
-         </div>
+         <GameInfo
+            isDraw={isDraw}
+            winnerSequence={winnerSequence}
+            renderSymbol={renderSymbol}
+            winnerSymbol={winnerSymbol}
+            currentStep={currentStep}
+         />
 
          <div className="game-field">
             {cells.map((symbol, index) => {
@@ -99,8 +90,39 @@ function App() {
    );
 }
 
-function GameInfo({ isDraw }) {
-   return <div>{isDraw ? 'Ничья' : 'Игра продолжается'}</div>;
+function GameInfo({ isDraw, winnerSymbol, currentStep }) {
+   if (isDraw) {
+      return <div className="game-info">Ничья</div>;
+   }
+
+   if (winnerSymbol) {
+      return <div className="game-info">Победитель: {winnerSymbol}</div>;
+   }
+
+   return (
+      <div className="game-info">
+         {isDraw ? 'Ничья' : winnerSequence ? 'Победитель: ' : 'Ход: '}
+         {!isDraw && <GameSymbol symbol={winnerSymbol ?? currentStep} />}
+      </div>
+   );
+}
+
+function GameCell({ isWinner, onClick, symbol }) {
+   return (
+      <button className={`cell ${isWinner ? 'cell--win' : ''}`} onClick={onClick}>
+         {symbol ? <GameSymbol symbol={symbol} /> : null}
+      </button>
+   );
+}
+
+function GameSymbol({ symbol }) {
+   const getSymbolClassName = (symbol) => {
+      if (symbol === SYMBOL_O) return 'symbol--o';
+      if (symbol === SYMBOL_X) return 'symbol--x';
+      return '';
+   };
+
+   return <span className={`symbol ${getSymbolClassName(symbol)}`}>{symbol}</span>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
