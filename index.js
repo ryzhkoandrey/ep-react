@@ -21,7 +21,7 @@ const computeWinner = (cells) => {
    }
 };
 
-function App() {
+function useGameState() {
    const [cells, setCells] = React.useState([
       null,
       null,
@@ -56,6 +56,28 @@ function App() {
 
    const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
    const isDraw = !winnerSequence && cells.filter((value) => value).length === 9;
+
+   return {
+      cells,
+      currentStep,
+      winnerSequence,
+      handleCellClick,
+      handleResetClick,
+      winnerSymbol,
+      isDraw,
+   };
+}
+
+function App() {
+   const {
+      cells,
+      currentStep,
+      winnerSequence,
+      handleCellClick,
+      handleResetClick,
+      winnerSymbol,
+      isDraw,
+   } = useGameState();
 
    return (
       <div className="game">
