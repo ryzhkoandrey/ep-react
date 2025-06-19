@@ -1,9 +1,5 @@
 function App() {
-   return <div>Hello World!</div>;
-}
-
-function Component() {
-   return <span>Component</span>;
+   return <div>Hello world</div>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
