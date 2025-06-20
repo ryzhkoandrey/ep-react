@@ -1,10 +1,19 @@
+function computing() {
+   return { counter: 10 };
+}
+
 function App() {
-   const [counter, setCounter] = React.useState(0);
+   const [isComponent, setIsComponent] = React.useState(false);
+   const [counter, setCounter] = React.useState(computing());
 
    const increment = () => {
+      setIsComponent((s) => !s);
+
       setCounter((lastCounter) => {
-         console.log('set state callback');
-         return lastCounter + 1;
+         return {
+            ...lastCounter,
+            counter: lastCounter.counter + 1,
+         };
       });
 
       console.log('after set counter');
@@ -16,11 +25,11 @@ function App() {
       increment();
    };
 
-   console.log('render', counter);
+   console.log('render', counter, isComponent);
 
    return (
       <div>
-         <div>Счетчик: {counter}</div>
+         <div>Счетчик: {counter.counter}</div>
          <button onClick={increment}>+1</button>
          <button onClick={increment3}>+3</button>
       </div>
