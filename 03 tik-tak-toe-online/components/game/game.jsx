@@ -15,14 +15,14 @@ export function Game() {
    } = useGameState();
 
    return (
-      <div className={styles['game']}>
+      <div className="flex flex-col items-center w-40 mx-auto my-24 p-5 border border-black">
          <GameInfo
             isDraw={isDraw}
             winnerSymbol={winnerSymbol}
             currentStep={currentStep}
          />
 
-         <div className={styles['game-field']}>
+         <div className="grid">
             {cells.map((symbol, index) => (
                <GameCell
                   key={index}
@@ -33,7 +33,10 @@ export function Game() {
             ))}
          </div>
 
-         <button className={styles['reset']} onClick={handleResetClick}>
+         <button
+            className="cursor-pointer mt-2.5 bg-transparent border border-gray-400 py-1 px-3 rounded"
+            onClick={handleResetClick}
+         >
             Сбросить
          </button>
       </div>
