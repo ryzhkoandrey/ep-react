@@ -9,16 +9,16 @@
    border: 1px solid black;
 } */
 
-.game-info {
+/* .game-info {
    margin-bottom: 10px;
-}
+} */
 
-.game-field {
+/* .game-field {
    display: grid;
    grid-template-columns: repeat(3, 30px);
    grid-template-rows: repeat(3, 30px);
    padding: 1px 0 0 1px;
-}
+} */
 
 .cell {
    border: 1px solid grey;

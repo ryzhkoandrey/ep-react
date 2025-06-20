@@ -1,6 +1,7 @@
 import { useGameState } from './use-game-state';
 import { GameInfo } from './game-info';
 import { GameCell } from './game-cell';
+import { ResetButton } from './reset-button';
 
 export function Game() {
    const {
@@ -32,12 +33,7 @@ export function Game() {
             ))}
          </div>
 
-         <button
-            className="cursor-pointer mt-2.5 bg-transparent border border-gray-400 py-1 px-3 rounded"
-            onClick={handleResetClick}
-         >
-            Сбросить
-         </button>
+         <ResetButton onClick={handleResetClick} />
       </div>
    );
 }
