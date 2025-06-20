@@ -1,3 +1,5 @@
+import { GameSymbol } from './game-symbol';
+
 export function GameCell({ isWinner, onClick, symbol }) {
    return (
       <button

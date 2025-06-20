@@ -1,3 +1,5 @@
+import { GameSymbol } from './game-symbol';
+
 export function GameInfo({ isDraw, winnerSymbol, currentStep }) {
    if (isDraw) {
       return <div className={styles['game-info']}>Ничья</div>;
