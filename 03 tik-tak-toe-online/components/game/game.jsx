@@ -1,7 +1,7 @@
 import { useGameState } from './use-game-state';
 import { GameInfo } from './game-info';
 import { GameCell } from './game-cell';
-import styles from '../../styles/game.module.css';
+import styles from './game.module.css';
 
 export function Game() {
    const {

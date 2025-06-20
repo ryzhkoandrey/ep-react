@@ -1,5 +1,5 @@
 import { SYMBOL_O, SYMBOL_X } from './constants';
-import styles from '../../styles/game.module.css';
+import styles from './game.module.css';
 
 export function GameSymbol({ symbol }) {
    const getSymbolClassName = (symbol) => {
