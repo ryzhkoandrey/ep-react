@@ -1,7 +1,6 @@
 import { useGameState } from './use-game-state';
 import { GameInfo } from './game-info';
 import { GameCell } from './game-cell';
-import styles from './game.module.css';
 
 export function Game() {
    const {
@@ -22,7 +21,7 @@ export function Game() {
             currentStep={currentStep}
          />
 
-         <div className="grid">
+         <div className="grid grid-cols-[repeat(3,_30px)] grid-rows-[repeat(3,_30px)] pt-px pl-px">
             {cells.map((symbol, index) => (
                <GameCell
                   key={index}
