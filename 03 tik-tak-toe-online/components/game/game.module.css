@@ -20,18 +20,18 @@
    padding: 1px 0 0 1px;
 } */
 
-.cell {
+/* .cell {
    border: 1px solid grey;
    margin: -1px 0 0 -1px;
    display: flex;
    align-items: center;
    justify-content: center;
    background-color: transparent;
-}
+} */
 
-.cell--win {
+/* .cell--win {
    background: rgba(0, 255, 22, 0.1);
-}
+} */
 
 .symbol {
    font-size: 20px;
