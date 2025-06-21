@@ -5,7 +5,7 @@ export function GameCell({ isWinner, onClick, symbol }) {
    return (
       <button
          className={clsx(
-            'border border-gray-400 -mt-px -ml-px flex items-center justify-center bg-transparent',
+            'border border-gray-400 -mt-px -ml-px flex items-center justify-center',
             isWinner && 'bg-green-100'
          )}
          onClick={onClick}
