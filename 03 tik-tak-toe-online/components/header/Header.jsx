@@ -18,8 +18,10 @@ export function Header() {
 
          {/* profile */}
          <button className="ml-auto flex items-center gap-2 text-start text-teal-600 hover:text-teal-500 transition-colors">
+            {/* avatar */}
             <Image src={avatarSrc} width={48} height={48} alt="avatar" unoptimized />
 
+            {/* info */}
             <div>
                <div className="text-lg leading-tight">Paromovevg</div>
                <div className="text-slate-400 text-xs leading-tight">
@@ -27,6 +29,7 @@ export function Header() {
                </div>
             </div>
 
+            {/* icon */}
             <svg
                width="18"
                height="18"
