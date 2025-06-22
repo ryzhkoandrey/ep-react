@@ -19,8 +19,6 @@ export function Header() {
          {/* profile */}
          <button className="ml-auto flex items-center gap-2 text-start text-teal-600 hover:text-teal-500 transition-colors">
             <Profile />
-
-            {/* icon */}
             <svg
                width="18"
                height="18"

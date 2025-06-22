@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import avatarSrc from './avatar.png';
 
 export function Profile() {
