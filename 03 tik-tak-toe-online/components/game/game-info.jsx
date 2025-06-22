@@ -8,7 +8,7 @@ export function GameInfo({ className }) {
          <div>
             <div className="relative">
                <Profile />
-               <div className="w-5 h-5 flex items-center justify-center rounded-full bg-white shadow absolute -left-1 -top-1">
+               <div className="w-5 h-5 rounded-full bg-white shadow absolute -left-1 -top-1 flex items-center justify-center">
                   <CrossIcon />
                </div>
             </div>
