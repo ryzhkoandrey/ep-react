@@ -6,7 +6,7 @@ export default function HomePage() {
       <div className="bg-slate-50 min-h-screen">
          <Header />
 
-         <main className="pt-6 mx-auto max-w-[616px]">
+         <main className="mx-auto max-w-[616px] pt-6 ">
             <GameTitle />
          </main>
       </div>
