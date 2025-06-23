@@ -4,18 +4,19 @@ import { CrossIcon } from './icons/cross-icon';
 import { UiButton } from '../uikit/ui-button';
 
 const cells = new Array(19 * 19).fill(null);
-const actions = (
-   <>
-      <UiButton size="md" variant="primary">
-         Ничья
-      </UiButton>
-      <UiButton size="md" variant="outline">
-         Сдаться
-      </UiButton>
-   </>
-);
 
 export function GameField({ className }) {
+   const actions = (
+      <>
+         <UiButton size="md" variant="primary">
+            Ничья
+         </UiButton>
+         <UiButton size="md" variant="outline">
+            Сдаться
+         </UiButton>
+      </>
+   );
+
    return (
       <GameFieldLayout className={className}>
          <GameMoveInfo actions={actions}></GameMoveInfo>
