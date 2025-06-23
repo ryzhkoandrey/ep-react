@@ -39,9 +39,7 @@ export function GameField({ className }) {
                <button
                   key={i}
                   className="border border-slate-200 -ml-px -mt-px flex items-center justify-center"
-               >
-                  <CrossIcon className="w-5 h-5" />
-               </button>
+               ></button>
             ))}
          </div>
       </div>
