@@ -13,6 +13,7 @@ export function GameInfo({ className }) {
       >
          {/* user */}
          <div className="flex items-center gap-3">
+            {/* profile */}
             <div className="relative">
                <Profile className="w-44" />
                <div className="w-5 h-5 rounded-full bg-white shadow absolute -left-1 -top-1 flex items-center justify-center">
@@ -20,17 +21,22 @@ export function GameInfo({ className }) {
                </div>
             </div>
 
+            {/* divider */}
             <div className="w-px h-6 bg-slate-200" />
 
-            <div className="text-slate-900 text-lg font-semibold">01:08</div>
+            {/* numbers */}
+            <div className="text-lg font-semibold">01:08</div>
          </div>
 
          {/* user */}
          <div className="flex items-center gap-3">
+            {/* numbers */}
             <div className="text-orange-600 text-lg font-semibold">00:08</div>
 
+            {/* divider */}
             <div className="w-px h-6 bg-slate-200" />
 
+            {/* profile */}
             <div className="relative">
                <Profile className="w-44" />
                <div className="w-5 h-5 rounded-full bg-white shadow absolute -left-1 -top-1 flex items-center justify-center">
