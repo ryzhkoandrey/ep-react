@@ -38,8 +38,10 @@ export function GameField({ className }) {
             {cells.map((_, i) => (
                <button
                   key={i}
-                  className="border border-slate-200 -ml-px -mt-px"
-               ></button>
+                  className="border border-slate-200 -ml-px -mt-px flex items-center justify-center"
+               >
+                  <CrossIcon className="w-5 h-5" />
+               </button>
             ))}
          </div>
       </div>

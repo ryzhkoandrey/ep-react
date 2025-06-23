@@ -6,7 +6,7 @@ export default function HomePage() {
       <div className="bg-slate-50 min-h-screen">
          <Header />
 
-         <main className="mx-auto max-w-[616px] pt-6 ">
+         <main className="mx-auto w-max py-6">
             <GameTitle />
             <GameInfo className="mt-4" />
             <GameField className="mt-6" />
