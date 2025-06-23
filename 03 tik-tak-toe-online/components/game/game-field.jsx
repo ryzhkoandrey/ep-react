@@ -8,28 +8,26 @@ export function GameField({ className }) {
       <div
          className={clsx(className, 'bg-white rounded-2xl shadow-md px-8 pt-5 pb-7')}
       >
-         <div className="flex items-center justify-between">
+         <div className="flex items-center gap-3">
             {/* info */}
-            <div>
-               <div className="flex items-center gap-1 text-xl leading-tight">
-                  Ход: <ZeroIcon />
+            <div className="mr-auto">
+               <div className="flex items-center gap-1 text-xl leading-tight font-semibold">
+                  Ход: <ZeroIcon className="w-5 h-5" />
                </div>
 
-               <div className="flex items-center gap-1">
+               <div className="flex items-center gap-1 text-xs leading-tight text-slate-400">
                   Следующий: <CrossIcon />
                </div>
             </div>
 
             {/* btns */}
-            <div className="flex items-center gap-3">
-               <UiButton size="md" variant="primary">
-                  Ничья
-               </UiButton>
+            <UiButton size="md" variant="primary">
+               Ничья
+            </UiButton>
 
-               <UiButton size="md" variant="outline">
-                  Сдаться
-               </UiButton>
-            </div>
+            <UiButton size="md" variant="outline">
+               Сдаться
+            </UiButton>
          </div>
       </div>
    );
