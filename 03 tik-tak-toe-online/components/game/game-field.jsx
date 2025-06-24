@@ -19,7 +19,8 @@ const MOVE_ORDER = [
 ];
 
 function getNextMove(currentMove) {
-   return;
+   const nextMoveIndex = MOVE_ORDER.indexOf(currentMove) + 1;
+   return MOVE_ORDER[nextMoveIndex] ?? MOVE_ORDER[0];
 }
 
 export function GameField({ className }) {
