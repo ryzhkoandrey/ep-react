@@ -10,16 +10,32 @@ import avatarSrc4 from './images/avatar-4.png';
 
 const players = [
    {
+      id: 1,
       name: 'Paromovevg',
       rating: '1230',
       avatar: avatarSrc1,
       symbol: GAME_SYMBOLS.CROSS,
    },
    {
-      name: 'Paromovevg',
-      rating: '1230',
+      id: 2,
+      name: 'VereIntedinglapotur',
+      rating: '850',
       avatar: avatarSrc2,
-      symbol: GAME_SYMBOLS.CROSS,
+      symbol: GAME_SYMBOLS.ZERO,
+   },
+   {
+      id: 3,
+      name: 'Lara',
+      rating: '1400',
+      avatar: avatarSrc3,
+      symbol: GAME_SYMBOLS.TRIANGLE,
+   },
+   {
+      id: 4,
+      name: 'Додик',
+      rating: '760',
+      avatar: avatarSrc4,
+      symbol: GAME_SYMBOLS.SQUARE,
    },
 ];
 
@@ -31,8 +47,8 @@ export function GameInfo({ className }) {
             'bg-white rounded-2xl shadow-md px-8 py-4 flex justify-between'
          )}
       >
-         {players.map((player, index) => {
-            return <PlayerInfo key={index} playerInfo={player} />;
+         {players.map((player) => {
+            return <PlayerInfo key={player.id} playerInfo={player} />;
          })}
       </div>
    );
