@@ -40,7 +40,11 @@ export function GameField({ className }) {
 
    return (
       <GameFieldLayout className={className}>
-         <GameMoveInfo actions={actions}></GameMoveInfo>
+         <GameMoveInfo
+            actions={actions}
+            currentMove={currentMove}
+            nextMove={nextMove}
+         ></GameMoveInfo>
 
          <GameGrid>
             {cells.map((_, index) => (
@@ -69,7 +73,7 @@ function GameFieldLayout({ children, className }) {
    );
 }
 
-function GameMoveInfo({ actions }) {
+function GameMoveInfo({ actions, currentMove, nextMove }) {
    return (
       <div className="flex items-center gap-3">
          <div className="mr-auto">
