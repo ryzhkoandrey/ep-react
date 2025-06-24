@@ -3,13 +3,7 @@ import { useState } from 'react';
 import { ZeroIcon } from './icons/zero-icon';
 import { CrossIcon } from './icons/cross-icon';
 import { UiButton } from '../uikit/ui-button';
-
-const GAME_SYMBOLS = {
-   ZERO: 'zero',
-   CROSS: 'cross',
-   TRIANGLE: 'triangle',
-   SQUARE: 'square',
-};
+import { GAME_SYMBOLS } from './constants';
 
 const MOVE_ORDER = [
    GAME_SYMBOLS.CROSS,
