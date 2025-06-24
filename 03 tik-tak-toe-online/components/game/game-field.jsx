@@ -28,7 +28,7 @@ export function GameField({ className }) {
          ...lastGameState,
          currentMove: getNextMove(lastGameState.currentMove),
          cells: lastGameState.cells.map((cell, i) =>
-            i === index ? getNextMove(lastGameState.currentMove) : cell
+            i === index ? lastGameState.currentMove : cell
          ),
       }));
    };
