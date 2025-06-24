@@ -17,9 +17,22 @@ function getNextMove(currentMove) {
 }
 
 export function GameField({ className }) {
-   const [cells, setCells] = useState(() => new Array(19 * 19).fill(null));
-   const [currentMove, setCurrentMove] = useState(GAME_SYMBOLS.ZERO);
+   const [{ cells, currentMove }, setGameState] = useState(() => ({
+      cells: new Array(19 * 19).fill(null),
+      currentMove: GAME_SYMBOLS.ZERO,
+   }));
    const nextMove = getNextMove(currentMove);
+
+   const handleCellClick = (index) => {
+      setGameState((lastGameState) => ({
+         ...lastGameState,
+         currentMove: getNextMove(lastGameState.currentMove),
+         cells: lastGameState.cells.map((cell, i) =>
+            i === index ? getNextMove(lastGameState.currentMove) : cell
+         ),
+      }));
+   };
+
    const actions = (
       <>
          <UiButton size="md" variant="primary">
@@ -40,17 +53,22 @@ export function GameField({ className }) {
          ></GameMoveInfo>
 
          <GameGrid>
-            {cells.map((_, index) => (
-               <GameCell key={index}></GameCell>
+            {cells.map((symbol, index) => (
+               <GameCell key={index} onClick={() => handleCellClick(index)}>
+                  {symbol && <GameSymbol symbol={symbol} className="w-5 h-5" />}
+               </GameCell>
             ))}
          </GameGrid>
       </GameFieldLayout>
    );
 }
 
-function GameCell({ children }) {
+function GameCell({ children, onClick }) {
    return (
-      <button className="border border-slate-200 -ml-px -mt-px flex items-center justify-center">
+      <button
+         onClick={onClick}
+         className="border border-slate-200 -ml-px -mt-px flex items-center justify-center"
+      >
          {children}
       </button>
    );
