@@ -44,21 +44,27 @@ export function GameInfo({ className }) {
       <div
          className={clsx(
             className,
-            'bg-white rounded-2xl shadow-md px-8 py-4 flex justify-between'
+            'bg-white rounded-2xl shadow-md px-8 py-4 grid grid-cols-2 gap-3'
          )}
       >
-         {players.map((player) => {
-            return <PlayerInfo key={player.id} playerInfo={player} />;
+         {players.map((player, index) => {
+            return (
+               <PlayerInfo
+                  key={player.id}
+                  playerInfo={player}
+                  isRight={index % 2 === 1}
+               />
+            );
          })}
       </div>
    );
 }
 
-function PlayerInfo({ playerInfo }) {
+function PlayerInfo({ playerInfo, isRight }) {
    return (
       <div className="flex items-center gap-3">
          {/* profile */}
-         <div className="relative">
+         <div className={clsx('relative', isRight && 'order-3')}>
             <Profile
                className="w-44"
                name={playerInfo.name}
@@ -71,10 +77,12 @@ function PlayerInfo({ playerInfo }) {
          </div>
 
          {/* divider */}
-         <div className="w-px h-6 bg-slate-200" />
+         <div className={clsx('w-px h-6 bg-slate-200', isRight && 'order-2')} />
 
          {/* numbers */}
-         <div className="text-lg font-semibold">01:08</div>
+         <div className={clsx('text-lg font-semibold', isRight && 'order-1')}>
+            01:08
+         </div>
       </div>
    );
 }
