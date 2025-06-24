@@ -1,6 +1,27 @@
 import clsx from 'clsx';
 import { Profile } from '../profile';
 import { GameSymbol } from './';
+import { GAME_SYMBOLS } from './constants';
+
+import avatarSrc1 from './images/avatar-1.png';
+import avatarSrc2 from './images/avatar-2.png';
+import avatarSrc3 from './images/avatar-3.png';
+import avatarSrc4 from './images/avatar-4.png';
+
+const players = [
+   {
+      name: 'Paromovevg',
+      rating: '1230',
+      avatar: avatarSrc1,
+      symbol: GAME_SYMBOLS.CROSS,
+   },
+   {
+      name: 'Paromovevg',
+      rating: '1230',
+      avatar: avatarSrc2,
+      symbol: GAME_SYMBOLS.CROSS,
+   },
+];
 
 export function GameInfo({ className }) {
    return (
@@ -10,8 +31,9 @@ export function GameInfo({ className }) {
             'bg-white rounded-2xl shadow-md px-8 py-4 flex justify-between'
          )}
       >
-         <PlayerInfo playerInfo={{ name: 'Andrey', rating: '1234' }} />
-         <PlayerInfo playerInfo={{ name: 'Ava', rating: '1234' }} />
+         {players.map((player, index) => {
+            return <PlayerInfo key={index} playerInfo={player} />;
+         })}
       </div>
    );
 }
