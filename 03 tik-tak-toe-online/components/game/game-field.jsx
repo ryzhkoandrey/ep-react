@@ -5,8 +5,8 @@ import { GAME_SYMBOLS } from './constants';
 import { GameSymbol } from './';
 
 const MOVE_ORDER = [
-   GAME_SYMBOLS.CROSS,
    GAME_SYMBOLS.ZERO,
+   GAME_SYMBOLS.CROSS,
    GAME_SYMBOLS.TRIANGLE,
    GAME_SYMBOLS.SQUARE,
 ];
@@ -18,7 +18,7 @@ function getNextMove(currentMove) {
 
 export function GameField({ className }) {
    const [cells, setCells] = useState(() => new Array(19 * 19).fill(null));
-   const [currentMove, setCurrentMove] = useState(GAME_SYMBOLS.CROSS);
+   const [currentMove, setCurrentMove] = useState(GAME_SYMBOLS.ZERO);
    const nextMove = getNextMove(currentMove);
    const actions = (
       <>
