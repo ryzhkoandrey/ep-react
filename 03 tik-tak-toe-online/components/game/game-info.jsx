@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useState } from 'react';
 import { Profile } from '../profile';
 import { GameSymbol } from './';
 import { GAME_SYMBOLS } from './constants';
@@ -61,6 +62,13 @@ export function GameInfo({ className, playersCount }) {
 }
 
 function PlayerInfo({ playerInfo, isRight }) {
+   const [seconds, setSeconds] = useState(66);
+
+   const minutesString = String(Math.floor(seconds / 60)).padStart(2, '0');
+   const secondsString = String(Math.floor(seconds % 60)).padStart(2, '0');
+
+   const isDanger = seconds < 10;
+
    return (
       <div className="flex items-center gap-3">
          {/* profile */}
@@ -79,9 +87,15 @@ function PlayerInfo({ playerInfo, isRight }) {
          {/* divider */}
          <div className={clsx('w-px h-6 bg-slate-200', isRight && 'order-2')} />
 
-         {/* numbers */}
-         <div className={clsx('text-lg font-semibold', isRight && 'order-1')}>
-            01:08
+         {/* timer */}
+         <div
+            className={clsx(
+               'text-lg font-semibold',
+               isRight && 'order-1',
+               isDanger && 'text-orange-600'
+            )}
+         >
+            {minutesString}:{secondsString}
          </div>
       </div>
    );

@@ -3,7 +3,7 @@ import { Header } from '../components/header';
 import { GameInfo, GameTitle, GameField } from '../components/game';
 
 export default function HomePage() {
-   const [playersCount] = useState(2);
+   const [playersCount] = useState(4);
 
    return (
       <div className="bg-slate-50 min-h-screen">
