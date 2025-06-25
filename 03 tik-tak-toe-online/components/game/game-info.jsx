@@ -62,18 +62,18 @@ export function GameInfo({ className, playersCount }) {
 }
 
 function PlayerInfo({ playerInfo, isRight }) {
-   const [seconds, setSeconds] = useState(66);
+   const [seconds, setSeconds] = useState(6);
 
    const minutesString = String(Math.floor(seconds / 60)).padStart(2, '0');
    const secondsString = String(Math.floor(seconds % 60)).padStart(2, '0');
 
    const isDanger = seconds < 10;
 
-   // useEffect(() => {
-   //    setInterval(() => {
-   //       setSeconds((s) => s - 1);
-   //    }, 1000);
-   // }, []);
+   useEffect(() => {
+      setInterval(() => {
+         setSeconds((s) => Math.max(s - 1, 0));
+      }, 1000);
+   }, []);
 
    return (
       <div className="flex items-center gap-3">
