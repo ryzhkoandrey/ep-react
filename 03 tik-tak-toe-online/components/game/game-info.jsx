@@ -40,7 +40,7 @@ const players = [
    },
 ];
 
-export function GameInfo({ className, playersCount }) {
+export function GameInfo({ className, playersCount, currentMove }) {
    return (
       <div
          className={clsx(
@@ -54,6 +54,7 @@ export function GameInfo({ className, playersCount }) {
                   key={player.id}
                   playerInfo={player}
                   isRight={index % 2 === 1}
+                  isTimerRunning={currentMove === player.symbol}
                />
             );
          })}
@@ -61,8 +62,8 @@ export function GameInfo({ className, playersCount }) {
    );
 }
 
-function PlayerInfo({ playerInfo, isRight }) {
-   const [seconds, setSeconds] = useState(6);
+function PlayerInfo({ playerInfo, isRight, isTimerRunning }) {
+   const [seconds, setSeconds] = useState(60);
 
    const minutesString = String(Math.floor(seconds / 60)).padStart(2, '0');
    const secondsString = String(Math.floor(seconds % 60)).padStart(2, '0');
@@ -70,10 +71,12 @@ function PlayerInfo({ playerInfo, isRight }) {
    const isDanger = seconds < 10;
 
    useEffect(() => {
-      setInterval(() => {
-         setSeconds((s) => Math.max(s - 1, 0));
-      }, 1000);
-   }, []);
+      if (isTimerRunning) {
+         setInterval(() => {
+            setSeconds((s) => Math.max(s - 1, 0));
+         }, 1000);
+      }
+   }, [isTimerRunning]);
 
    return (
       <div className="flex items-center gap-3">

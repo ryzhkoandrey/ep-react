@@ -11,15 +11,22 @@ export default function HomePage() {
    return (
       <div className="bg-slate-50 min-h-screen">
          <Header />
+
          <main className="mx-auto w-max pt-6">
             <GameTitle playersCount={playersCount} />
-            <GameInfo playersCount={playersCount} className="mt-4" />
+
+            <GameInfo
+               className="mt-4"
+               playersCount={playersCount}
+               currentMove={currentMove}
+            />
+
             <GameField
+               className="mt-6"
                cells={cells}
                currentMove={currentMove}
                nextMove={nextMove}
                handleCellClick={handleCellClick}
-               className="mt-6"
             />
          </main>
       </div>
