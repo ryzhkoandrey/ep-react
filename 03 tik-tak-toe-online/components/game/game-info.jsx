@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Profile } from '../profile';
 import { GameSymbol } from './';
 import { GAME_SYMBOLS } from './constants';
@@ -68,6 +68,12 @@ function PlayerInfo({ playerInfo, isRight }) {
    const secondsString = String(Math.floor(seconds % 60)).padStart(2, '0');
 
    const isDanger = seconds < 10;
+
+   // useEffect(() => {
+   //    setInterval(() => {
+   //       setSeconds((s) => s - 1);
+   //    }, 1000);
+   // }, []);
 
    return (
       <div className="flex items-center gap-3">
