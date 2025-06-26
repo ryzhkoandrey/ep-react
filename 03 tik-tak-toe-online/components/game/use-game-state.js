@@ -7,6 +7,26 @@ function getNextMove(currentMove, playersCount) {
    return slicedMoveOrder[nextMoveIndex] ?? slicedMoveOrder[0];
 }
 
+function computeWinner(cells, sequenceSize = 5, fieldSize = 19) {
+   const gap = Math.floor(sequenceSize / 2);
+
+   function getSequenceIndexes(i) {
+      const res = [
+         [], // -
+         [], // \
+         [], // /
+         [], // |
+      ];
+
+      for (let j = 0; j < sequenceSize; j++) {}
+   }
+
+   for (let i = 0; i < cells.length; i++) {
+      if (cells[i]) {
+      }
+   }
+}
+
 export function useGameState(playersCount) {
    const [{ cells, currentMove }, setGameState] = useState(() => ({
       cells: new Array(19 * 19).fill(null),
