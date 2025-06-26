@@ -18,11 +18,19 @@ function computeWinner(cells, sequenceSize = 5, fieldSize = 19) {
          [], // |
       ];
 
-      for (let j = 0; j < sequenceSize; j++) {}
+      for (let j = 0; j < sequenceSize; j++) {
+         res[0].push(j - gap + i);
+         res[1].push(fieldSize * (j - gap) + (j - gap) + i);
+         res[2].push(-fieldSize * (j - gap) + (j - gap) + i);
+         res[3].push(fieldSize * (j - gap) + i);
+      }
+
+      return res;
    }
 
    for (let i = 0; i < cells.length; i++) {
       if (cells[i]) {
+         console.log(getSequenceIndexes(i));
       }
    }
 }
@@ -32,6 +40,8 @@ export function useGameState(playersCount) {
       cells: new Array(19 * 19).fill(null),
       currentMove: GAME_SYMBOLS.CROSS,
    }));
+
+   console.log(computeWinner(cells));
 
    const nextMove = getNextMove(currentMove, playersCount);
 
