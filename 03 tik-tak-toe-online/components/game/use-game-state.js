@@ -8,8 +8,7 @@ export function useGameState(playersCount) {
       currentMove: GAME_SYMBOLS.CROSS,
    }));
 
-   console.log(computeWinner(cells));
-
+   const winnerSequence = computeWinner(cells);
    const nextMove = getNextMove(currentMove, playersCount);
 
    const handleCellClick = (index) => {
@@ -33,5 +32,6 @@ export function useGameState(playersCount) {
       currentMove,
       nextMove,
       handleCellClick,
+      winnerSequence,
    };
 }
