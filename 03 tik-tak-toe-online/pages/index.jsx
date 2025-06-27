@@ -3,7 +3,7 @@ import { GameInfo, GameTitle, GameField, useGameState } from '../components/game
 import { Header } from '../components/header';
 
 export default function HomePage() {
-   const [playersCount] = useState(2);
+   const [playersCount] = useState(4);
 
    const { cells, currentMove, handleCellClick, nextMove, winnerSequence } =
       useGameState(playersCount);

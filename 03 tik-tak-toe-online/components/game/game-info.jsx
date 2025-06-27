@@ -62,7 +62,7 @@ export function GameInfo({ className, playersCount, currentMove, isWinner }) {
    );
 }
 
-function PlayerInfo({ playerInfo, isRight, isTimerRunning }) {
+function PlayerInfo({ playerInfo, isRight, isTimerRunning, onTimeOver }) {
    const [seconds, setSeconds] = useState(60);
 
    const minutesString = String(Math.floor(seconds / 60)).padStart(2, '0');
@@ -82,6 +82,12 @@ function PlayerInfo({ playerInfo, isRight, isTimerRunning }) {
          };
       }
    }, [isTimerRunning]);
+
+   useEffect(() => {
+      if (seconds === 0) {
+         onTimeOver();
+      }
+   }, [seconds]);
 
    const getTimerColor = () => {
       if (isTimerRunning) {
