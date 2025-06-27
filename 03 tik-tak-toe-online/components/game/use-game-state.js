@@ -3,14 +3,14 @@ import { GAME_SYMBOLS } from './constants';
 import { getNextMove, computeWinner } from './model';
 
 export function useGameState(playersCount) {
-   const [{ cells, currentMove }, setGameState] = useState(() => ({
+   const [{ cells, currentMove, playersTimeOver }, setGameState] = useState(() => ({
       cells: new Array(19 * 19).fill(null),
       currentMove: GAME_SYMBOLS.CROSS,
       playersTimeOver: [],
    }));
 
    const winnerSequence = computeWinner(cells);
-   const nextMove = getNextMove(currentMove, playersCount);
+   const nextMove = getNextMove(currentMove, playersCount, playersTimeOver);
 
    const handleCellClick = (index) => {
       setGameState((lastGameState) => {
@@ -20,7 +20,11 @@ export function useGameState(playersCount) {
 
          return {
             ...lastGameState,
-            currentMove: getNextMove(lastGameState.currentMove, playersCount),
+            currentMove: getNextMove(
+               lastGameState.currentMove,
+               playersCount,
+               playersTimeOver
+            ),
             cells: lastGameState.cells.map((cell, i) =>
                i === index ? lastGameState.currentMove : cell
             ),
@@ -33,7 +37,11 @@ export function useGameState(playersCount) {
          return {
             ...lastGameState,
             playersTimeOver: [...lastGameState.playersTimeOver, symbol],
-            currentMove: getNextMove(lastGameState.currentMove, playersCount),
+            currentMove: getNextMove(
+               lastGameState.currentMove,
+               playersCount,
+               playersTimeOver
+            ),
          };
       });
    };
