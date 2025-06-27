@@ -23,7 +23,7 @@ export function useGameState(playersCount) {
             currentMove: getNextMove(
                lastGameState.currentMove,
                playersCount,
-               playersTimeOver
+               lastGameState.playersTimeOver
             ),
             cells: lastGameState.cells.map((cell, i) =>
                i === index ? lastGameState.currentMove : cell
@@ -40,7 +40,7 @@ export function useGameState(playersCount) {
             currentMove: getNextMove(
                lastGameState.currentMove,
                playersCount,
-               playersTimeOver
+               lastGameState.playersTimeOver
             ),
          };
       });
