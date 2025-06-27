@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { GameInfo, GameTitle, GameField, useGameState } from '../components/game';
+import {
+   GameInfo,
+   GameTitle,
+   GameField,
+   useGameState,
+   GameSymbol,
+} from '../components/game';
 import { Header } from '../components/header';
 
 export default function HomePage() {
@@ -12,6 +18,7 @@ export default function HomePage() {
       nextMove,
       winnerSequence,
       handlePlayersTimeOver,
+      winnerSymbol,
    } = useGameState(playersCount);
 
    return (
@@ -25,9 +32,15 @@ export default function HomePage() {
                className="mt-4"
                playersCount={playersCount}
                currentMove={currentMove}
-               isWinner={!!winnerSequence}
+               isWinner={!!winnerSymbol}
                onPlayerTimeOver={handlePlayersTimeOver}
             />
+
+            {winnerSymbol && (
+               <div>
+                  <GameSymbol symbol={winnerSymbol} />
+               </div>
+            )}
 
             <GameField
                className="mt-6"
@@ -36,6 +49,7 @@ export default function HomePage() {
                nextMove={nextMove}
                handleCellClick={handleCellClick}
                winnerSequence={winnerSequence}
+               winnerSymbol={winnerSymbol}
             />
          </main>
       </div>
