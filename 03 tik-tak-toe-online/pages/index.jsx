@@ -43,7 +43,11 @@ export default function HomePage() {
                </div>
             )}
 
-            <UiModal width="md" />
+            <UiModal width="md">
+               <UiModal.Header>Игра завершена!</UiModal.Header>
+               <UiModal.Body></UiModal.Body>
+               <UiModal.Footer></UiModal.Footer>
+            </UiModal>
 
             <GameField
                className="mt-6"

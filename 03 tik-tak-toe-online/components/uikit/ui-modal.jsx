@@ -7,7 +7,7 @@ import clsx from 'clsx';
  * @returns
  */
 
-export function UiModal({ width = 'md', className }) {
+export function UiModal({ width = 'md', className, children }) {
    return (
       <div
          className={clsx(
@@ -15,6 +15,7 @@ export function UiModal({ width = 'md', className }) {
             className
          )}
       >
+         {/* inner */}
          <div
             className={clsx(
                'bg-white rounded-lg min-h-[320px] mx-auto relative',
@@ -24,6 +25,7 @@ export function UiModal({ width = 'md', className }) {
                }[width]
             )}
          >
+            {/* close */}
             <button
                className="w-8 h-8 rounded flex items-center justify-center 
                   hover:bg-white/40 bg-white/10 transition-colors
@@ -31,17 +33,22 @@ export function UiModal({ width = 'md', className }) {
             >
                <CrossLightIcon className={'w-4 h-4 text-white'} />
             </button>
+
+            {/* content */}
+            {children}
          </div>
       </div>
    );
 }
 
 UiModal.Header = function UiModalHeader({ children, className }) {
-   return <div className={clsx(className, '')}>{children}</div>;
+   return (
+      <div className={clsx(className, 'px-6 pt-6 pb-4 text-2xl')}>{children}</div>
+   );
 };
 
 UiModal.Body = function UiModalBody({ children, className }) {
-   return <div className={clsx(className, '')}>{children}</div>;
+   return <div className={clsx(className, 'px-6')}>{children}</div>;
 };
 
 UiModal.Footer = function UiModalFooter({ children, className }) {
