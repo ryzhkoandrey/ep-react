@@ -8,6 +8,7 @@ import {
 } from '../components/game';
 import { Header } from '../components/header';
 import { UiModal } from '../components/uikit/ui-modal';
+import { UiButton } from '../components/uikit/ui-button';
 
 export default function HomePage() {
    const [playersCount] = useState(4);
@@ -45,8 +46,18 @@ export default function HomePage() {
 
             <UiModal width="md">
                <UiModal.Header>Игра завершена!</UiModal.Header>
-               <UiModal.Body></UiModal.Body>
-               <UiModal.Footer></UiModal.Footer>
+
+               <UiModal.Body>Body</UiModal.Body>
+
+               <UiModal.Footer>
+                  <UiButton size="md" variant="outline">
+                     Вернуться
+                  </UiButton>
+
+                  <UiButton size="md" variant="primary">
+                     Играть снова
+                  </UiButton>
+               </UiModal.Footer>
             </UiModal>
 
             <GameField

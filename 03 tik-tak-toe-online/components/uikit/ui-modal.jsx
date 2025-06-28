@@ -18,7 +18,7 @@ export function UiModal({ width = 'md', className, children }) {
          {/* inner */}
          <div
             className={clsx(
-               'bg-white rounded-lg min-h-[320px] mx-auto relative',
+               'bg-white rounded-lg min-h-[320px] mx-auto relative flex flex-col',
                {
                   md: 'max-w-[640px] w-full',
                   full: 'mx-5',
@@ -52,7 +52,11 @@ UiModal.Body = function UiModalBody({ children, className }) {
 };
 
 UiModal.Footer = function UiModalFooter({ children, className }) {
-   return <div className={clsx(className, '')}>{children}</div>;
+   return (
+      <div className={clsx(className, 'mt-auto p-6 flex gap-4 justify-end')}>
+         {children}
+      </div>
+   );
 };
 
 function CrossLightIcon({ className }) {
