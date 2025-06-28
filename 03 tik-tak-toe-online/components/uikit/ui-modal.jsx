@@ -1,16 +1,20 @@
 import clsx from 'clsx';
 
 /**
- *
  * @param {{
  *    width: 'md' | 'full'
  * }} props
  * @returns
  */
 
-export function UiModal({ width = 'md' }) {
+export function UiModal({ width = 'md', className }) {
    return (
-      <div className="fixed inset-0 bg-slate-900/60 backdrop-blur pt-10 pb-10">
+      <div
+         className={clsx(
+            'fixed inset-0 bg-slate-900/60 backdrop-blur pt-10 pb-10',
+            className
+         )}
+      >
          <div
             className={clsx(
                'bg-white rounded-lg min-h-[320px] mx-auto relative',
@@ -31,6 +35,18 @@ export function UiModal({ width = 'md' }) {
       </div>
    );
 }
+
+UiModal.Header = function UiModalHeader({ children, className }) {
+   return <div className={clsx(className, '')}>{children}</div>;
+};
+
+UiModal.Body = function UiModalBody({ children, className }) {
+   return <div className={clsx(className, '')}>{children}</div>;
+};
+
+UiModal.Footer = function UiModalFooter({ children, className }) {
+   return <div className={clsx(className, '')}>{children}</div>;
+};
 
 function CrossLightIcon({ className }) {
    return (
