@@ -7,6 +7,7 @@ import {
    GameSymbol,
 } from '../components/game';
 import { Header } from '../components/header';
+import { UiModal } from '../components/uikit/ui-modal';
 
 export default function HomePage() {
    const [playersCount] = useState(4);
@@ -41,6 +42,8 @@ export default function HomePage() {
                   <GameSymbol symbol={winnerSymbol} />
                </div>
             )}
+
+            <UiModal width="md" />
 
             <GameField
                className="mt-6"
