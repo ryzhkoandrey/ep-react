@@ -38,16 +38,14 @@ export default function HomePage() {
                onPlayerTimeOver={handlePlayersTimeOver}
             />
 
-            {winnerSymbol && (
-               <div>
-                  <GameSymbol symbol={winnerSymbol} />
-               </div>
-            )}
-
-            <UiModal width="md">
+            <UiModal width="md" isOpen={winnerSymbol}>
                <UiModal.Header>Игра завершена!</UiModal.Header>
 
-               <UiModal.Body>Body</UiModal.Body>
+               <UiModal.Body>
+                  <div className="text-sm">
+                     Победитель: <span className="text-teal-600">Paromovevg</span>
+                  </div>
+               </UiModal.Body>
 
                <UiModal.Footer>
                   <UiButton size="md" variant="outline">

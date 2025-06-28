@@ -2,16 +2,22 @@ import clsx from 'clsx';
 
 /**
  * @param {{
- *    width: 'md' | 'full'
+ *    className: string,
+ *    width: 'md' | 'full',
+ *    isOpen: boolean,
  * }} props
  * @returns
  */
 
-export function UiModal({ width = 'md', className, children }) {
+export function UiModal({ width = 'md', className, children, isOpen = false }) {
+   if (!isOpen) {
+      return null;
+   }
+
    return (
       <div
          className={clsx(
-            'fixed inset-0 bg-slate-900/60 backdrop-blur pt-10 pb-10',
+            'fixed inset-0 bg-slate-900/60 backdrop-blur pt-10 pb-10 overflow-y-auto',
             className
          )}
       >
