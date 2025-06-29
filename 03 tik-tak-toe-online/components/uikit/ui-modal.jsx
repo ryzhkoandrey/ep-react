@@ -5,17 +5,29 @@ import clsx from 'clsx';
  *    className: string,
  *    width: 'md' | 'full',
  *    isOpen: boolean,
+ *    onClose: function,
  * }} props
  * @returns
  */
 
-export function UiModal({ width = 'md', className, children, isOpen = false }) {
-   if (!isOpen) {
-      return null;
-   }
+export function UiModal({
+   width = 'md',
+   className,
+   children,
+   isOpen = false,
+   onClose,
+}) {
+   if (!isOpen) return null;
+
+   const handleClick = (e) => {
+      const inModal = e.target.closest('[data-id=modal]');
+      if (inModal) return;
+      onClose();
+   };
 
    return (
       <div
+         onClick={handleClick}
          className={clsx(
             'fixed inset-0 bg-slate-900/60 backdrop-blur pt-10 pb-10 overflow-y-auto',
             className
@@ -23,6 +35,7 @@ export function UiModal({ width = 'md', className, children, isOpen = false }) {
       >
          {/* inner */}
          <div
+            data-id="modal"
             className={clsx(
                'bg-white rounded-lg min-h-[320px] mx-auto relative flex flex-col',
                {
@@ -33,6 +46,7 @@ export function UiModal({ width = 'md', className, children, isOpen = false }) {
          >
             {/* close */}
             <button
+               onClick={onClose}
                className="w-8 h-8 rounded flex items-center justify-center 
                   hover:bg-white/40 bg-white/10 transition-colors
                   absolute top-0 left-[calc(100%+12px)]"

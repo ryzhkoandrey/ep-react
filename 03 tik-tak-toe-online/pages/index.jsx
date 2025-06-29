@@ -38,7 +38,11 @@ export default function HomePage() {
                onPlayerTimeOver={handlePlayersTimeOver}
             />
 
-            <UiModal width="md" isOpen={winnerSymbol}>
+            <UiModal
+               width="md"
+               isOpen={winnerSymbol}
+               onClose={() => console.log('close')}
+            >
                <UiModal.Header>Игра завершена!</UiModal.Header>
 
                <UiModal.Body>
