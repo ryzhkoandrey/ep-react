@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-   GameInfo,
-   GameTitle,
-   GameField,
-   useGameState,
-   GameSymbol,
-} from '../components/game';
+import { GameInfo, GameTitle, GameField, useGameState } from '../components/game';
 import { Header } from '../components/header';
 import { UiModal } from '../components/uikit/ui-modal';
 import { UiButton } from '../components/uikit/ui-button';

@@ -70,7 +70,7 @@ export function GameInfo({
 }
 
 function PlayerInfo({ playerInfo, isRight, isTimerRunning, onTimeOver }) {
-   const [seconds, setSeconds] = useState(6);
+   const [seconds, setSeconds] = useState(60);
 
    const minutesString = String(Math.floor(seconds / 60)).padStart(2, '0');
    const secondsString = String(Math.floor(seconds % 60)).padStart(2, '0');
@@ -85,7 +85,7 @@ function PlayerInfo({ playerInfo, isRight, isTimerRunning, onTimeOver }) {
 
          return () => {
             clearInterval(interval);
-            setSeconds(6);
+            setSeconds(60);
          };
       }
    }, [isTimerRunning]);
