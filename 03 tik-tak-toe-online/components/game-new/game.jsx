@@ -1,3 +1,5 @@
+import { GameLayouts } from './ui/game-layout';
+
 export function Game() {
-   return null;
+   return <GameLayouts />;
 }
